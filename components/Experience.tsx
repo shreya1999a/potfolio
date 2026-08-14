@@ -10,22 +10,16 @@ const experiences = [
     period: "Jan 2025 – Present",
     current: true,
     bullets: [
-      "Designed and deployed RAG pipelines integrating GPT-4, Claude, LLaMA, and Falcon via LangChain with Pinecone vector search for clinical knowledge retrieval and automated NER from EHR data.",
-      "Built a multi-agent GenAI system with LangGraph orchestrating patient risk stratification and readmission prediction on top of Random Forest, XGBoost, and Neural Network models, with SHAP/LIME explainability.",
-      "Fine-tuned domain-specific LLMs using LoRA/PEFT on Azure CUDA VMs for clinical note summarization and HIPAA-compliant PHI de-identification.",
-      "Deployed models to production on AWS SageMaker/ECS Fargate and GCP Vertex AI/GKE, monitored with Prometheus.",
-      "Automated ETL/streaming pipelines with Kafka, Spark, and Databricks; built Power BI dashboards for patient risk and treatment outcomes.",
+      "Designed and deployed Retrieval-Augmented Generation (RAG) pipelines integrating GPT-4, Claude, LLaMA, and Falcon via LangChain, with Hugging Face Transformers for embeddings and Pinecone vector search to power clinical knowledge retrieval and automated NER for diagnoses, medications, and procedures from EHR data.",
+      "Built a multi-agent GenAI system with LangGraph to orchestrate patient risk stratification, readmission prediction, and disease progression forecasting workflows on top of Random Forest, XGBoost, and Keras/TensorFlow Neural Network models, using SHAP/LIME to explain model outputs for clinical stakeholders.",
+      "Fine-tuned domain-specific LLMs using LoRA/PEFT techniques on Azure CUDA VMs for clinical note summarization and HIPAA-compliant PHI de-identification, improving accuracy while reducing manual documentation time.",
+      "Deployed LLM and ML models to production on AWS SageMaker and ECS Fargate with Cognito-based authentication, and on GCP Vertex AI/GKE with BigQuery and Cloud Functions for scalable fine-tuning, data processing, and inference; monitored deployments with Prometheus for real-time performance and latency tracking.",
+      "Automated ETL/streaming pipelines with Kafka, Spark, and Databricks for real-time multi-source healthcare data, and used Snowflake for centralized data warehousing; integrated FHIR standards for interoperability.",
+      "Built Power BI dashboards for patient risk scores and treatment outcomes, and conducted A/B testing of AI-powered patient engagement tools, measuring improvements in communication and appointment adherence.",
     ],
     tags: [
-      "LangChain",
-      "LangGraph",
-      "GPT-4",
-      "RAG",
-      "LoRA/PEFT",
-      "AWS SageMaker",
-      "GCP Vertex AI",
-      "Kafka",
-      "Spark",
+      "LangChain", "LangGraph", "GPT-4", "RAG", "Pinecone",
+      "LoRA/PEFT", "AWS SageMaker", "GCP Vertex AI", "Kafka", "Spark", "Databricks", "Snowflake",
     ],
   },
 ];
@@ -55,11 +49,9 @@ export default function Experience() {
 
   return (
     <section id="experience" ref={sectionRef} className="py-24 px-6 relative overflow-hidden">
-      {/* Background accent */}
       <div className="absolute top-1/2 right-0 w-[400px] h-[400px] rounded-full bg-[#6366f1]/5 blur-[100px] pointer-events-none" />
 
       <div className="max-w-6xl mx-auto">
-        {/* Header */}
         <div className="fade-up mb-16">
           <p
             className="text-sm font-medium text-[#6366f1] uppercase tracking-widest mb-2"
@@ -75,15 +67,12 @@ export default function Experience() {
           </h2>
         </div>
 
-        {/* Timeline */}
         <div className="relative">
-          {/* Vertical line */}
           <div className="absolute left-6 md:left-8 top-0 bottom-0 w-px bg-gradient-to-b from-[#6366f1] via-[#8b5cf6] to-transparent" />
 
           <div className="space-y-12">
             {experiences.map((exp, idx) => (
               <div key={idx} className="fade-up relative pl-16 md:pl-20">
-                {/* Timeline dot */}
                 <div className="absolute left-4 md:left-6 top-1 w-5 h-5 flex items-center justify-center">
                   <div className="relative w-4 h-4">
                     {exp.current && (
@@ -93,7 +82,6 @@ export default function Experience() {
                   </div>
                 </div>
 
-                {/* Card */}
                 <div className="gradient-border p-6 sm:p-8 hover:glow-blue transition-all duration-300">
                   <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-2 mb-4">
                     <div>
@@ -108,10 +96,7 @@ export default function Experience() {
                         style={{ fontFamily: "var(--font-body)" }}
                       >
                         {exp.company}
-                        <span className="text-[#8892b0] font-normal">
-                          {" "}
-                          · {exp.location}
-                        </span>
+                        <span className="text-[#8892b0] font-normal"> · {exp.location}</span>
                       </p>
                     </div>
                     <div className="flex items-center gap-2 shrink-0">
@@ -132,7 +117,6 @@ export default function Experience() {
                     </div>
                   </div>
 
-                  {/* Bullets */}
                   <ul className="space-y-2.5 mb-6">
                     {exp.bullets.map((bullet, bi) => (
                       <li
@@ -146,7 +130,6 @@ export default function Experience() {
                     ))}
                   </ul>
 
-                  {/* Tags */}
                   <div className="flex flex-wrap gap-2">
                     {exp.tags.map((tag) => (
                       <span

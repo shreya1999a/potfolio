@@ -13,37 +13,42 @@ const projects = [
   {
     title: "BookNest",
     subtitle: "Library Management Analytics Platform",
-    description:
-      "Full-stack platform for library management with smart book retrieval and data analytics. Features MongoDB aggregation pipelines for efficient search, A/B-tested recommendation features, and role-based authentication for admins and users.",
+    bullets: [
+      "Full-stack developer building front end in React.js and back-end services in Node.js with MongoDB, deployed on AWS (EC2, S3).",
+      "Built MongoDB aggregation pipelines to automate data processing and optimize book retrieval performance.",
+      "Ran A/B tests on search and recommendation variants to measure user engagement impact.",
+      "Developed responsive dashboards with role-based authentication for data security.",
+    ],
     tags: ["React.js", "Node.js", "MongoDB", "AWS EC2", "AWS S3", "A/B Testing"],
-    github: "https://github.com/",
+    github: "https://github.com/shreya1999a",
     demo: null,
     accentColor: "#6366f1",
   },
   {
     title: "Investire",
     subtitle: "Startup–Investor Intelligence Platform",
-    description:
-      "Intelligence platform connecting startups with investors. A/B-tested navigation and dashboards, deep analytics on funding trends, investor behavior, and user engagement metrics. Full-stack with cloud deployment.",
+    bullets: [
+      "Built the platform end to end with React.js front-end interfaces and back-end REST APIs in Node.js with MongoDB, hosted on AWS.",
+      "Ran A/B tests on investor-facing navigation and dashboard layouts to improve decision-making efficiency.",
+      "Designed analytical dashboards to monitor funding trends, user activity, and platform performance metrics.",
+      "Implemented MongoDB optimization and AWS-based API integration for real-time data retrieval at scale.",
+    ],
     tags: ["React.js", "Node.js", "MongoDB", "AWS", "A/B Testing", "Analytics"],
-    github: "https://github.com/",
+    github: "https://github.com/shreya1999a",
     demo: null,
     accentColor: "#8b5cf6",
   },
   {
     title: "Cyber Breach Predictor",
     subtitle: "ML for Cybersecurity Risk",
-    description:
-      "ML pipeline predicting cyber hacking breaches using classification models. Includes feature engineering, anomaly detection, model explainability, and a React.js dashboard for interactive risk visualization.",
-    tags: [
-      "Python",
-      "Scikit-learn",
-      "React.js",
-      "Feature Engineering",
-      "Anomaly Detection",
-      "NLP",
+    bullets: [
+      "Developed and trained ML models in Python (Scikit-learn) using statistical analysis to predict potential cybersecurity breaches.",
+      "Applied classification algorithms, feature engineering, and multivariate analysis to identify attack patterns.",
+      "Performed data preprocessing, anomaly detection, and model evaluation to improve predictive accuracy.",
+      "Built a React.js dashboard to visualize risk insights and deliver actionable threat mitigation recommendations.",
     ],
-    github: "https://github.com/",
+    tags: ["Python", "Scikit-learn", "React.js", "Feature Engineering", "Anomaly Detection", "NLP"],
+    github: "https://github.com/shreya1999a",
     demo: null,
     accentColor: "#22d3ee",
   },
@@ -83,11 +88,9 @@ export default function Projects() {
       ref={sectionRef}
       className="py-24 px-6 bg-[#0f1220] relative overflow-hidden"
     >
-      {/* Background accent */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[300px] rounded-full bg-[#6366f1]/5 blur-[100px] pointer-events-none" />
 
       <div className="max-w-6xl mx-auto">
-        {/* Header */}
         <div className="fade-up mb-16">
           <p
             className="text-sm font-medium text-[#6366f1] uppercase tracking-widest mb-2"
@@ -105,29 +108,22 @@ export default function Projects() {
             className="mt-3 text-[#8892b0] max-w-xl"
             style={{ fontFamily: "var(--font-body)" }}
           >
-            A selection of production-ready projects spanning ML systems, full-stack
-            apps, and data platforms.
+            Academic and production projects spanning ML systems, full-stack apps, and data platforms.
           </p>
         </div>
 
-        {/* Cards Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {projects.map((project) => (
             <article
               key={project.title}
               className="project-card fade-up gradient-border flex flex-col group hover:scale-[1.01] transition-transform duration-300"
-              style={{ minHeight: "320px" }}
             >
-              {/* Top accent bar */}
               <div
                 className="h-1 rounded-t-xl"
-                style={{
-                  background: `linear-gradient(90deg, ${project.accentColor}, transparent)`,
-                }}
+                style={{ background: `linear-gradient(90deg, ${project.accentColor}, transparent)` }}
               />
 
               <div className="p-6 flex flex-col flex-1">
-                {/* Icon + links */}
                 <div className="flex items-start justify-between mb-4">
                   <div
                     className="w-10 h-10 rounded-lg flex items-center justify-center text-xl font-bold"
@@ -165,7 +161,6 @@ export default function Projects() {
                   </div>
                 </div>
 
-                {/* Title */}
                 <h3
                   className="text-lg font-bold text-white mb-1"
                   style={{ fontFamily: "var(--font-heading)" }}
@@ -179,15 +174,19 @@ export default function Projects() {
                   {project.subtitle}
                 </p>
 
-                {/* Description */}
-                <p
-                  className="text-sm text-[#8892b0] leading-relaxed flex-1 mb-5"
-                  style={{ fontFamily: "var(--font-body)" }}
-                >
-                  {project.description}
-                </p>
+                <ul className="space-y-1.5 flex-1 mb-5">
+                  {project.bullets.map((b, i) => (
+                    <li
+                      key={i}
+                      className="flex gap-2 text-xs text-[#8892b0] leading-relaxed"
+                      style={{ fontFamily: "var(--font-body)" }}
+                    >
+                      <span className="mt-1.5 shrink-0 w-1 h-1 rounded-full bg-[#6366f1]" />
+                      {b}
+                    </li>
+                  ))}
+                </ul>
 
-                {/* Tags */}
                 <div className="flex flex-wrap gap-1.5 mt-auto">
                   {project.tags.map((tag) => (
                     <span
