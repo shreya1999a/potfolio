@@ -1,0 +1,133 @@
+@import "tailwindcss";
+
+@theme {
+  /* Colors */
+  --color-background: #0a0b14;
+  --color-surface: #0f1220;
+  --color-surface-2: #151929;
+  --color-border: #1e2540;
+  --color-foreground: #e8eaf6;
+  --color-muted: #8892b0;
+  --color-accent-blue: #6366f1;
+  --color-accent-violet: #8b5cf6;
+  --color-accent-cyan: #22d3ee;
+
+  /* Fonts */
+  --font-heading: var(--font-space-grotesk), "Space Grotesk", system-ui, sans-serif;
+  --font-body: var(--font-inter), "Inter", system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", "Fira Code", monospace;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  background-color: #0a0b14;
+}
+
+body {
+  background-color: #0a0b14;
+  color: #e8eaf6;
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+/* Selection */
+::selection {
+  background-color: #6366f1;
+  color: #fff;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #0a0b14;
+}
+::-webkit-scrollbar-thumb {
+  background: #1e2540;
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #6366f1;
+}
+
+/* Gradient text utility */
+.gradient-text {
+  background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 50%, #22d3ee 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Gradient border card */
+.gradient-border {
+  position: relative;
+  background: #0f1220;
+  border-radius: 12px;
+}
+.gradient-border::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 12px;
+  padding: 1px;
+  background: linear-gradient(135deg, #6366f1, #8b5cf6, #22d3ee);
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+}
+
+/* Glow effect */
+.glow-blue {
+  box-shadow: 0 0 30px rgba(99, 102, 241, 0.15);
+}
+
+/* Fade-in animation classes (JS-driven) */
+.fade-up {
+  opacity: 0;
+  transform: translateY(32px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+.fade-up.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.fade-in {
+  opacity: 0;
+  transition: opacity 0.7s ease;
+}
+.fade-in.visible {
+  opacity: 1;
+}
+
+/* Stagger delays for children */
+.stagger > *:nth-child(1) { transition-delay: 0ms; }
+.stagger > *:nth-child(2) { transition-delay: 80ms; }
+.stagger > *:nth-child(3) { transition-delay: 160ms; }
+.stagger > *:nth-child(4) { transition-delay: 240ms; }
+.stagger > *:nth-child(5) { transition-delay: 320ms; }
+.stagger > *:nth-child(6) { transition-delay: 400ms; }
+.stagger > *:nth-child(7) { transition-delay: 480ms; }
+.stagger > *:nth-child(8) { transition-delay: 560ms; }
+
+/* Timeline dot pulse */
+@keyframes pulse-ring {
+  0% { transform: scale(1); opacity: 0.6; }
+  100% { transform: scale(1.8); opacity: 0; }
+}
+.pulse-ring::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: #6366f1;
+  animation: pulse-ring 2s ease-out infinite;
+}
